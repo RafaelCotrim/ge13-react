@@ -14,6 +14,7 @@ For more information about worldbuilding, I recommend you check out [r/worldbuil
 
 ## To-do
 
+- [ ] Better home page
 - [x] Basic star calculator
 - [ ] Planetary system generator
 - [ ] Basic Planet calculator 

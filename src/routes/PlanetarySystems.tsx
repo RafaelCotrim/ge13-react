@@ -13,7 +13,7 @@ import { SystemContext } from "../providers/SystemProvider";
 import { round } from "../utils/Math";
 import { AnyUnit, convert, unitName } from "../utils/Units";
 
-export function Stars() {
+export function PlanetarySystem() {
 
   const errorBox = useRef<HTMLDivElement>(null);
 
