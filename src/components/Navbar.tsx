@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import  logo from "../assets/images/logo.svg"
 
-export function Navbar({ }) {
+export function Navbar() {
   return (
     <nav className='flex flex-row p-4 bg-slate-800 text-gray-300 text-2xl font-bold drop-shadow-md'>
       
