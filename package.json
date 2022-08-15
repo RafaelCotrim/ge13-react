@@ -2,6 +2,7 @@
   "name": "ge13",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rafaelcotrim.github.io/ge13",
   "dependencies": {
     "@react-three/drei": "^9.20.0",
     "@react-three/fiber": "^8.3.1",
@@ -13,6 +14,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/three": "^0.143.0",
+    "gh-pages": "^4.0.0",
     "heroicons-react": "^1.4.1",
     "lamina": "^1.1.23",
     "react": "^18.2.0",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
