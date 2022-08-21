@@ -3,15 +3,20 @@ import { Canvas, MeshProps } from "@react-three/fiber";
 import { Depth, LayerMaterial } from "lamina";
 import { ChangeEvent, useCallback, useContext, useMemo, useRef, useState } from "react";
 import { AddEquation, ColorRepresentation, CustomBlending, DstAlphaFactor, SrcAlphaFactor } from "three";
-import { Dropdown } from "../components/Dropdown";
-import { Input } from "../components/Input";
-import { Panel } from "../components/Panel";
-import { SciNotation } from "../components/SciNotation";
-import { Cell, Row, Table } from "../components/Table";
-import { Star } from "../models/Star";
-import { SystemContext } from "../providers/SystemProvider";
-import { round } from "../utils/Math";
-import { AnyUnit, convert, unitName } from "../utils/Units";
+import { Dropdown } from "../../components/Dropdown";
+import { Input } from "../../components/Input";
+import { Panel } from "../../components/Panel";
+import { SciNotation } from "../../components/SciNotation";
+import { Cell, Row, Table } from "../../components/Table";
+import { Star } from "../../models/Star";
+import { SystemContext } from "../../providers/SystemProvider";
+import { round } from "../../utils/Math";
+import { AnyUnit, convert, unitName } from "../../utils/Units";
+
+interface PlanetarySystemProps{
+  mass: number,
+  setMass: (newUnit: number) => void
+}
 
 export function PlanetarySystem() {
 

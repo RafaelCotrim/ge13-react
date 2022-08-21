@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { PlanetarySystem } from './routes/PlanetarySystems';
+import { PlanetarySystem } from './routes/Systems/PlanetarySystems';
 import { Home } from './routes/Home';
 
 const root = ReactDOM.createRoot(
