@@ -21,11 +21,8 @@ export function round(n: number, digits?: number) {
 
 export function rgbToHex(red: number,green: number,blue: number) {
     var r = red.toString(16);
-    console.log(r);
     var g = green.toString(16);
-    console.log(g);
     var b = blue.toString(16);
-    console.log(b);
   
     if (r.length == 1)
       r = "0" + r;

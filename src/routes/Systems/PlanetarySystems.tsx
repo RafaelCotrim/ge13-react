@@ -8,10 +8,12 @@ import { Input } from "../../components/Input";
 import { Panel } from "../../components/Panel";
 import { SciNotation } from "../../components/SciNotation";
 import { Cell, Row, Table } from "../../components/Table";
+import UnitSelector from "../../components/UnitSelector";
 import { Star } from "../../models/Star";
 import { SystemContext } from "../../providers/SystemProvider";
 import { round } from "../../utils/Math";
 import { AnyUnit, convert, unitName } from "../../utils/Units";
+import Orbits from "./Orbits";
 
 interface PlanetarySystemProps{
   mass: number,
@@ -22,7 +24,7 @@ export function PlanetarySystem() {
 
   const errorBox = useRef<HTMLDivElement>(null);
 
-  const [system, setSystem] = useContext(SystemContext)
+  const [system, _] = useContext(SystemContext)
   const [mass, setMass] = useState(1);
   const [starName, setName] = useState("Your Star");
 
@@ -64,16 +66,6 @@ export function PlanetarySystem() {
     }
   }, []);
 
-  const changeUnit = useCallback((selection: number) => {
-    if (selection === 0) {
-      setSystem("default");
-    } else if (selection === 1) {
-      setSystem("metric");
-    } else {
-      setSystem("imperial");
-    }
-  }, [setSystem]);
-
   const checkSystem = useCallback(<T,>(astro: T, metric: T, imperial?: T) => {
     if (system === "default") {
       return astro;
@@ -89,7 +81,7 @@ export function PlanetarySystem() {
     { name: "Radius", value: star.getRadius(), unit: "sr", to: checkSystem<AnyUnit>("sr", "km", "mi") },
     { name: "Luminosity", value: star.getLuminosity(), unit: "sl", to: checkSystem<AnyUnit>("sl", "w") },
     { name: "Life Expectancy", value: star.getLifeExpectancy(), unit: "gyr", precision: 4 },
-    { name: "Temperature", value: star.getTemperature(), unit: "k", to: checkSystem<AnyUnit>("k", "c", "f"), precision: 0 },
+    { name: "Temperature", value: star.getTemperature(), unit: "k", to: checkSystem<AnyUnit>("k", "c", "f"), precision: 0, cutoff: 10 },
     { name: "Density", value: star.getDensity(), unit: "sd", to: checkSystem<AnyUnit>("sd", "kg/m3", "lbs/ft3") }
   ];
 
@@ -101,7 +93,7 @@ export function PlanetarySystem() {
         <Panel prose>
 
           <div className=" flex flex-row gap-2 mb-2 ">
-            <Dropdown className="inline-block w-28 h-14 text-lg" options={["Default", "Metric", "Imperial"]} onSelect={changeUnit} />
+            <UnitSelector />
             <div ref={errorBox} className="flex flex-col justify-center h-0 w-full text-red-500 border-red-500 rounded-lg overflow-hidden duration-700">
               <span className="mx-auto">Mass must be a number between 0.075 and 100 solar masses</span>
             </div>
@@ -113,7 +105,7 @@ export function PlanetarySystem() {
                 <label htmlFor="nameInput">Name</label>
               </Cell>
               <Cell>
-                <Input id="nameInput" type="text" width="w-32" onChange={(e) => setName(e.target.value)} defaultValue={starName} />
+                <Input id="nameInput" type="text" className="w-32" onChange={(e) => setName(e.target.value)} defaultValue={starName} />
               </Cell>
               <Cell></Cell>
             </Row>
@@ -192,6 +184,8 @@ export function PlanetarySystem() {
           <StarDisplay position={[8, 0, 0]} star={star} />
         </Canvas>
       </div>
+
+      <Orbits/>
     </>
   );
 }
@@ -203,9 +197,10 @@ interface QuantityRowProps {
   to?: AnyUnit
   showValue?: boolean,
   precision?: number
+  cutoff?: number
 }
 
-function QuantityRow({ name, value, unit, to, showValue = true, precision = 3 }: QuantityRowProps) {
+function QuantityRow({ name, value, unit, to, showValue = true, precision = 3, cutoff = 4 }: QuantityRowProps) {
 
   var finalValue;
 
@@ -218,7 +213,7 @@ function QuantityRow({ name, value, unit, to, showValue = true, precision = 3 }:
       computedValue = round(value, precision);
     }
 
-    finalValue = <SciNotation value={computedValue} precision={precision} />
+    finalValue = <SciNotation value={computedValue} precision={precision} cutoff={cutoff} />
   } else {
     finalValue = "-"
   }
