@@ -14,15 +14,13 @@ export function Navbar() {
       </div>
 
       <div className="flex gap-4  mx-auto ">
-        <Link to="/stars">Stars</Link>
-        <span>Solar systems</span>
-        <span>Planets</span>
+        <Link to="/systems">Planetary systems</Link>
       </div>
 
       <div className="flex flex-row-reverse gap-4 min-w-[20vw]">
         <span className="">Resources</span>
         <span>Docs</span>
-        <span>Github</span>
+        <a href="https://github.com/RafaelCotrim/ge13">Github</a>
         <span>About</span>
       </div>
     </nav>

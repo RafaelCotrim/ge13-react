@@ -2,7 +2,8 @@ import { ChevronDown } from "heroicons-react";
 import { useState } from "react";
 
 interface DropdownProps {
-    options: string[]
+    options: string[],
+    text?: string
     default?: number
     className?: string
     onSelect?: (i: number) => void
@@ -16,7 +17,7 @@ export function Dropdown(props: DropdownProps) {
         <div className={props.className + " text-white [&:focus-within>ul]:block [&:hover>ul]:block relative"}>
             <button className="w-full h-full bg-slate-700 rounded-lg px-4 py-2 flex flex-row justify-between align-middle"
                 type="button">
-                <span className="my-auto">Units</span>
+                <span className="my-auto">{props.text}</span>
                 <ChevronDown className=" inline-block my-auto " />
             </button>
 
@@ -30,3 +31,5 @@ export function Dropdown(props: DropdownProps) {
         </div>
     );
 }
+
+

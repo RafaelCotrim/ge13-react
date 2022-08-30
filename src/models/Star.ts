@@ -52,6 +52,10 @@ export class Star {
         return { start: this.getHabitableZoneStart(), end: this.getHabitableZoneEnd() };
     }
 
+    public getFrostLine(){
+        return 4.85 * Math.sqrt(this.getLuminosity())
+    }
+
     public getClassification() {
 
         var temperature = this.getTemperature();
