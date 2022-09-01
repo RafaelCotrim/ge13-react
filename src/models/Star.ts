@@ -2,16 +2,22 @@ import data from '../data.json';
 import { coerce, rgbToHex, round } from '../utils/Math';
 
 export class Star {
-    public static readonly sol = new Star(1)
+    public static readonly sol = new Star(1, "Sol")
 
     private _mass: number;
+    private _name: string;
 
-    constructor(mass: number) {
+    constructor(mass: number, name: string) {
         this._mass = mass;
+        this._name = name;
     }
 
     public get mass(){
         return this._mass;
+    }
+
+    public get name(){
+        return this._name;
     }
 
     public getRadius() {
