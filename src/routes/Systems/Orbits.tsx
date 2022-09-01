@@ -11,10 +11,9 @@ import { round } from "../../utils/Math";
 const baseOrbit = 0.4;
 const spacing = 0.3;
 
-export default function Orbits() {
+export default function Orbits({star} : {star: Star}) {
 
     var orbits = [0, 1, 2, 3, 4, 5, 6, 7, 8].map(x => round(baseOrbit + spacing * Math.pow(2, x), 2));
-    var star = new Star(1);
 
     const mapArea = useCallback<(distance: number) => Area>((distance: number) => {
         if(distance >= star.getHabitableZoneStart() && distance <= star.getHabitableZoneEnd()){

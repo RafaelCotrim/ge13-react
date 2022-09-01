@@ -16,9 +16,9 @@ export function Table(props: TableProps) {
             <table className={(props.full ? "w-full" : "") + ""}>
                 <thead className="uppercase bg-slate-900 ">
                     <tr>
-                        {props.headers.map(h => (
+                        {props.headers.map(header => (
                             <th scope="col" className="py-3 px-6">
-                                {h}
+                                {header}
                             </th>
                         ))}
                     </tr>
