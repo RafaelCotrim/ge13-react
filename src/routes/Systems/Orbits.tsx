@@ -10,30 +10,37 @@ import { round } from "../../utils/Math";
 
 const baseOrbit = 0.4;
 const spacing = 0.3;
+const defaultOrbits = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-export default function Orbits({star} : {star: Star}) {
+export default function Orbits({ star }: { star: Star }) {
 
-    var orbits = [0, 1, 2, 3, 4, 5, 6, 7, 8].map(x => round(baseOrbit + spacing * Math.pow(2, x), 2));
+    // var orbits = [0, 1, 2, 3, 4, 5, 6, 7, 8].map(x => round(baseOrbit + spacing * Math.pow(2, x), 2));
 
     const mapArea = useCallback<(distance: number) => Area>((distance: number) => {
-        if(distance >= star.getHabitableZoneStart() && distance <= star.getHabitableZoneEnd()){
+        if (distance >= star.getHabitableZoneStart() && distance <= star.getHabitableZoneEnd()) {
             return "habitable";
-        } else if (distance < star.getFrostLine()){
+        } else if (distance < star.getFrostLine()) {
             return "rocky";
         }
         return "gass";
     }, [star]);
+
+    const [orbits, setOrbits] = useState(defaultOrbits.map(x => {
+        var d = round(baseOrbit + spacing * Math.pow(2, x), 2);
+
+        return { name: "Orbit " + x, distance: d, area: mapArea(d) };
+    }));
 
     return (
         <div className="mt-4">
             <Panel prose>
                 <Table full headers={["Name", "Distance (AU)", "Type"]} bodyCss="[&>tr>td:nth-child(2)]:text-center">
                     {orbits.map((x, i) => (
-                        <OrbitRow name={"Orbit " + i} distance={x} area={mapArea(x)}/>
+                        <OrbitRow {...x} area={mapArea(x.distance)} />
                     ))}
                     <Row>
                         <Cell></Cell>
-                        <Cell><Button><Plus/></Button></Cell>
+                        <Cell><Button onClick={(x) => setOrbits([...orbits, {name: "Orbit " + orbits.length, distance: 2, area: "habitable"}])}><Plus /></Button></Cell>
                         <Cell></Cell>
                     </Row>
                 </Table>
@@ -54,16 +61,16 @@ function OrbitRow({ name, distance, area }: OrbitRowProps) {
 
     var className;
 
-    if(area === "rocky"){
+    if (area === "rocky") {
         className = " outline outline-blue-500"
-    } else if (area === "habitable"){
+    } else if (area === "habitable") {
         className = " outline outline-green-500"
     } else {
         className = " outline outline-orange-500"
     }
 
     className += " focus:outline";
-    
+
     return (
         <Row>
             <Cell><Input defaultValue={name} /></Cell>
