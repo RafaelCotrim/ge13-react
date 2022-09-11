@@ -7,12 +7,11 @@ function App() {
   
   return (
     <SystemProvider>
-      <div className=' bg-gray-900 min-h-screen flex text-gray-300'>
+      <div className='bg-shade-900 min-h-screen flex text-white'>
         <div className='w-full'>
-          <Navbar />
-          <div className='m-5'>
-            <Outlet />
-          </div>
+          {/* <Navbar /> */}
+          <Outlet />
+          
         </div>
       </div>
     </SystemProvider>

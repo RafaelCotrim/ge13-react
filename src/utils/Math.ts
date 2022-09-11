@@ -38,3 +38,7 @@ export function toSciNotation(n: number){
   var [base, exp] = n.toExponential().split("e").map(item => Number(item));
   return {base, exp};
 }
+
+export function range(size: number, startAt = 0) {
+  return Array.from({length: size}, (x, i) => i + startAt);
+}

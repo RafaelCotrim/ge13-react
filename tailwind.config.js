@@ -7,26 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        "shade-900": "#040d21",
+        "shade-800": "#232b3d",
+        "shade-700": "#434a59",
+        "shade-600": "#626874"
+      },
       width:{
         "prose": "65ch",
       },
-      minWidth:{
-        "prose": "65ch",
+      maxWidth:{
+        "1/2": "50%",
+        "4/5": "80%"
       },
-      colors:{
-        "base": "#2b2d42",
-        "highlight": "#3685B5",
-        'base': {
-          DEFAULT: '#2b2d42',
-          light: '#46475a',
-          dark: '#202232'
-        },
-        keyframes: {
-          vanish: {
-            '25%': { color: "transparent" },
-            '100%': { height: '0' },
-          }
-        }
+      backgroundImage: {
+        'hero-pattern': "radial-gradient(circle at top left,  rgba(0,29,179,1) 0%, rgba(0,0,0,1) 30%);",
       }
     },
   },
