@@ -1,3 +1,5 @@
+import { ReactThreeFiber } from "@react-three/fiber";
+
 export function coerce(value: number, min: number, max: number) {
     if (value < min) {
         return min;
@@ -10,7 +12,7 @@ export function coerce(value: number, min: number, max: number) {
 
 export function round(n: number, digits?: number) {
 
-    if (digits == undefined) {
+    if (digits === undefined) {
         digits = 0;
     }
 
@@ -24,11 +26,11 @@ export function rgbToHex(red: number,green: number,blue: number) {
     var g = green.toString(16);
     var b = blue.toString(16);
   
-    if (r.length == 1)
+    if (r.length === 1)
       r = "0" + r;
-    if (g.length == 1)
+    if (g.length === 1)
       g = "0" + g;
-    if (b.length == 1)
+    if (b.length === 1)
       b = "0" + b;
   
     return "#" + r + g + b;

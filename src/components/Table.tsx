@@ -17,7 +17,7 @@ export function Table(props: TableProps) {
                 <thead className="uppercase bg-slate-900 ">
                     <tr>
                         {props.headers.map(header => (
-                            <th scope="col" className="py-3 px-6">
+                            <th scope="col" className="py-3 px-3 md:px-6">
                                 {header}
                             </th>
                         ))}
@@ -49,7 +49,7 @@ interface CellProps {
 
 export function Cell(props: CellProps) {
     return (
-        <td className="py-4 px-6">
+        <td className="py-3 px-3 md:px-6">
             {props.children}
         </td>
     );

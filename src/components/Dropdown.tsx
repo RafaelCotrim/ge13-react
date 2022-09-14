@@ -1,5 +1,6 @@
 import { ChevronDown } from "heroicons-react";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface DropdownProps {
     options: string[],
@@ -14,11 +15,11 @@ export function Dropdown(props: DropdownProps) {
     const [selected, set_selected] = useState(props.default ?? 0);
 
     return (
-        <div className={props.className + " text-white [&:focus-within>ul]:block [&:hover>ul]:block relative"}>
-            <button className="w-full h-full bg-slate-700 rounded-lg px-4 py-2 flex flex-row justify-between align-middle"
+        <div className={twMerge("text-white [&:focus-within>ul]:block [&:hover>ul]:block relative", props.className)}>
+            <button className="w-full h-full bg-slate-700 rounded-lg px-2 md:px-4 py-2 flex flex-row justify-between align-middle"
                 type="button">
                 <span className="my-auto">{props.text}</span>
-                <ChevronDown className=" inline-block my-auto " />
+                <ChevronDown className="inline-block my-auto" />
             </button>
 
             <ul className="w-full options hidden mt-0.5 absolute rounded-lg overflow-auto">

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import hero from "../assets/images/hero.jpg"
 import placeholder from "../assets/images/placeholder.png";
+import sunPicture from "../assets/images/sun.jpg";
 import Card from "../components/Card";
+import FeatureCard from "../components/FeatureCard";
+import { Navbar } from "../components/Navbar";
 import { range } from "../utils/Math";
 
 export function Home({ }) {
@@ -19,7 +22,7 @@ export function Home({ }) {
                         Build more cohesive worlds by getting inspiration from astronomy
                     </p>
 
-                    <Link to="/systems">
+                    <Link to="/stars">
                         <button className="bg-green-500 font-bold py-2 px-4 rounded-md">
                             Start creating
                         </button>
@@ -27,20 +30,19 @@ export function Home({ }) {
                 </div>
             </div>
             <div className="min-h-[10vh] py-10 bg-gradient-to-b from-black to-shade-900">
-                <h2 className="text-3xl font-bold text-center">Features</h2>
+
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 max-w-4/5 mx-auto gap-5">
-                {range(3).map(x =>
-                    <Card>
-                        <img src={placeholder} className="rounded-md" />
-                        <h3 className="text-xl text-center py-2">
-                            Feature
-                        </h3>
-                        <p>
-                            Description
-                        </p>
-                    </Card>
-                )}
+            <h2 className="text-3xl font-bold text-center py-5">Features</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 w-4/5 max-w-6xl mx-auto gap-5 pb-5">
+                <FeatureCard title="Stellar Calculator" image={sunPicture} link="/stars">
+                    Determine the properties of main sequence stars based on their mass. You can discover their size, class, color, life expectancy and much more!
+                </FeatureCard>
+                <FeatureCard title="Orbit builder" status="wip">
+                    Build the orbits of your solar system, considering the habitable zone of each star, their frost line and much more. Just edit the values and look at the preview!
+                </FeatureCard>
+                <FeatureCard title="Planetary Editor" status="wip">
+                    Edit the properties of planets to see what is possible! Derived information such as composition and mean surface temperature will be calculated automatically.
+                </FeatureCard>
             </div>
         </>
     );

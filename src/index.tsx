@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { PlanetarySystem } from './routes/Systems/PlanetarySystems';
+import { PlanetarySystem } from './routes/PlanetarySystems/Stars';
 import { Home } from './routes/Home';
 
 const root = ReactDOM.createRoot(
@@ -17,7 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={ <Home/> } />
-          <Route path="systems" element={<PlanetarySystem />} />
+          <Route path="stars" element={<PlanetarySystem />} />
           <Route
           path="*"
           element={

@@ -1,6 +1,6 @@
-import { ChangeEvent, useCallback, useContext, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useContext, useRef, useState } from "react";
+import Card from "../../components/Card";
 import { Input } from "../../components/Input";
-import { Panel } from "../../components/Panel";
 import { SciNotation } from "../../components/SciNotation";
 import { Cell, Row, Table } from "../../components/Table";
 import UnitSelector from "../../components/UnitSelector";
@@ -9,10 +9,11 @@ import { SystemContext } from "../../providers/SystemProvider";
 import { round } from "../../utils/Math";
 import { AnyUnit, convert, unitName } from "../../utils/Units";
 
-export default function StarProperties({ star, setStar }: { star: Star, setStar: (star: Star) => void }) {
+
+export default function StarProperties({ star, setStar, className }: { star: Star, setStar: (star: Star) => void, className?: string }) {
 
     const errorBox = useRef<HTMLDivElement>(null);
-    const [starName, setName] = useState("Your Star");
+    const [starName,] = useState("Your Star");
 
     const [, , checkSystem] = useContext(SystemContext)
 
@@ -59,12 +60,11 @@ export default function StarProperties({ star, setStar }: { star: Star, setStar:
     ];
 
     return (
-        <Panel prose>
-
-            <div className=" flex flex-row gap-2 mb-2 ">
+        <Card className={className}>
+            <div className="flex flex-row gap-2 mb-2 ">
                 <UnitSelector />
                 <div ref={errorBox} className="flex flex-col justify-center h-0 w-full text-red-500 border-red-500 rounded-lg overflow-hidden duration-700">
-                    <span className="mx-auto">Mass must be a number between 0.075 and 100 solar masses</span>
+                    <span className="mx-auto ">Mass must be a number between 0.075 and 100 solar masses</span>
                 </div>
             </div>
 
@@ -74,7 +74,7 @@ export default function StarProperties({ star, setStar }: { star: Star, setStar:
                         <label htmlFor="nameInput">Name</label>
                     </Cell>
                     <Cell>
-                        <Input id="nameInput" type="text" className="w-32" onChange={(e) => setStar(new Star(star.mass, e.target.value))} defaultValue={starName} />
+                        <Input id="nameInput" type="text" className="w-20 md:w-32" onChange={(e) => setStar(new Star(star.mass, e.target.value))} defaultValue={starName} />
                     </Cell>
                     <Cell></Cell>
                 </Row>
@@ -83,7 +83,7 @@ export default function StarProperties({ star, setStar }: { star: Star, setStar:
                         <label htmlFor="massInput">Mass</label>
                     </Cell>
                     <Cell>
-                        <Input id="massInput" type="number" min={0.075} max={100} defaultValue={1} onChange={(e) => checkMass(e)} />
+                        <Input id="massInput" type="number" className="w-20" min={0.075} max={100} defaultValue={1} onChange={(e) => checkMass(e)} />
                     </Cell>
                     <Cell>Solar Masses</Cell>
                 </Row>
@@ -132,8 +132,7 @@ export default function StarProperties({ star, setStar }: { star: Star, setStar:
                     <Cell></Cell>
                 </Row>
             </Table>
-
-        </Panel>
+        </Card>
     );
 }
 

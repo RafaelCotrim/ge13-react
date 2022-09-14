@@ -3,20 +3,13 @@ import './App.css';
 import { Navbar } from './components/Navbar';
 import { SystemProvider } from './providers/SystemProvider';
 
-function App() {
-  
+export default function App() {
+
   return (
     <SystemProvider>
-      <div className='bg-shade-900 min-h-screen flex text-white'>
-        <div className='w-full'>
-          {/* <Navbar /> */}
-          <Outlet />
-          
-        </div>
+      <div className='w-full min-h-screen bg-shade-900  text-white '>
+        <Outlet />
       </div>
     </SystemProvider>
-
   );
 }
-
-export default App;

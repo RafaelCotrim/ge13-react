@@ -17,6 +17,6 @@ export default function UnitSelector() {
     }, [setSystem]);
 
     return (
-        <Dropdown className="inline-block w-28 h-14 text-lg" text="Units" options={["Default", "Metric", "Imperial"]} onSelect={changeUnit} />
+        <Dropdown className="inline-block text-base md:text-lg" text="Units" options={["Default", "Metric", "Imperial"]} onSelect={changeUnit} />
     );
 }

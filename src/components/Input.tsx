@@ -1,8 +1,4 @@
-import { ChangeEventHandler, HTMLInputTypeAttribute, LegacyRef } from "react";
 import { twMerge } from "tailwind-merge";
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-}
 
 export function Input({className, ...props}: React.InputHTMLAttributes<HTMLInputElement>) {
     return (

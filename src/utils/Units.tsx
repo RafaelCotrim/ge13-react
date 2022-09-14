@@ -205,7 +205,7 @@ export class Quantity {
 
     public to(unit: AnyUnit) {
 
-        if (this._unit == unit) {
+        if (this._unit === unit) {
             return this;
         }
 
