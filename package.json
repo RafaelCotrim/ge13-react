@@ -2,7 +2,7 @@
   "name": "ge13",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rafaelcotrim.github.io/ge13",
+  "homepage": "https://rafaelcotrim.github.io/ge13-react",
   "dependencies": {
     "@react-three/drei": "^9.20.0",
     "@react-three/fiber": "^8.3.1",
